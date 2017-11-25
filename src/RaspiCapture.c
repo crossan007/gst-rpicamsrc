@@ -959,8 +959,7 @@ raspi_capture_fill_buffer(RASPIVID_STATE *state, GstBuffer **bufp,
 
   
     GstClockTime offset = 80000000;
-    if (runtime >= offset)
-      gst_pts = runtime - offset;
+    gst_pts = runtime - offset;
     
     GST_LOG ("Buf (uS) PTS %" G_GINT64_FORMAT " DTS %" G_GINT64_FORMAT
         " STC %" G_GINT64_FORMAT " (latency %" G_GINT64_FORMAT
