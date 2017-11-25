@@ -958,7 +958,7 @@ raspi_capture_fill_buffer(RASPIVID_STATE *state, GstBuffer **bufp,
     mmal_port_parameter_get(state->encoder_output_port, &param.hdr);
 
   
-    GstClockTime offset = 80000000
+    GstClockTime offset = 80000000;
     if (runtime >= offset)
       gst_pts = runtime - offset;
     
