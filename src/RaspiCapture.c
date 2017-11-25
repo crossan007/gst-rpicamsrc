@@ -959,7 +959,7 @@ raspi_capture_fill_buffer(RASPIVID_STATE *state, GstBuffer **bufp,
 
     if (buffer->pts != -1 && param.value != -1 && param.value >= buffer->pts) {
       /* Convert microsecond RPi TS to GStreamer clock: */
-      GstClockTime offset = (param.value - buffer->pts) * 100000;
+      GstClockTime offset = (param.value - buffer->pts) * 10;
       if (runtime >= offset)
         gst_pts = runtime - offset;
     }
