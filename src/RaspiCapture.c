@@ -958,7 +958,7 @@ raspi_capture_fill_buffer(RASPIVID_STATE *state, GstBuffer **bufp,
     mmal_port_parameter_get(state->encoder_output_port, &param.hdr);
 
   
-    GstClockTime offset = 80000000;
+    GstClockTime offset = 1200000000;
     gst_pts = runtime - offset;
     
     GST_LOG ("Buf (uS) PTS %" G_GINT64_FORMAT " DTS %" G_GINT64_FORMAT
@@ -970,6 +970,9 @@ raspi_capture_fill_buffer(RASPIVID_STATE *state, GstBuffer **bufp,
   else {
     GST_LOG ("use-stc=false. Not applying STC to buffer");
   }
+
+  GstClockTime offset = 1200000000;
+  gst_pts = gst_clock_get_time (clock) - base_time - offset;
 
   mmal_buffer_header_mem_lock(buffer);
   buf = gst_buffer_new_allocate(NULL, buffer->length, NULL);
